@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="lib/boot.css">
+
+    <script src="https://www.gstatic.com/firebasejs/4.3.0/firebase.js"></script>
+    <script>
+        // Initialize Firebase
+        var config = {
+        };
+        firebase.initializeApp(config);
+    </script>
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+
+            <div class="col">
+                <div class="input-group">
+                    <span class="input-group-addon" id="basic-addon1">User Name</span>
+                    <input type="text" id="userName" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+                </div>
+                <div class="input-group">
+                    <span class="input-group-addon" id="basic-addon1">abc@Example.com</span>
+                    <input type="text" id="email" class="form-control" placeholder="User Email" aria-label="Username" aria-describedby="basic-addon1">
+                </div>
+                <div class="input-group">
+                    <span class="input-group-addon" id="basic-addon1">password</span>
+                    <input type="password" id="pass" class="form-control" placeholder="Password" aria-label="Username" aria-describedby="basic-addon1">
+                </div>
+
+                <button class="btn btn-success" onclick="submit()">SUBMIT</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="lib/jquery.js"></script>
+    <script src="lib/popper.js"></script>
+    <script src="lib/boot.js"></script>
+</body>
+<script src="app.js"></script>
+
+</html>
