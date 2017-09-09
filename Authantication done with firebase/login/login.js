@@ -15,9 +15,12 @@ document.getElementById('stop')
             .then(function (success) {
                 // console.log(success.uid)
                 database.child('users/' + success.uid)
-                 .once('value', function (snapshot) {
-                    console.log(snapshot.val())
-                })
+                    .once('value', function (snapshot) {
+                        var convert = JSON.stringify(snapshot.val())
+                        localStorage.setItem('loggedInUser', convert)
+                        location = '../home/home.html'
+                        // console.log(convert)
+                    })
             })
             .catch(function (error) {
                 // Handle Errors here.

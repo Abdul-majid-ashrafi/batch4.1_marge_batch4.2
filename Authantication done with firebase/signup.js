@@ -1,13 +1,15 @@
 var database = firebase.database().ref('/')
 
-var username = document.getElementById('userName')
+var firstName = document.getElementById('firstName')
+var lastName = document.getElementById('lastName')
 var email = document.getElementById('email')
 var pass = document.getElementById('pass')
 
 function submit() {
 
     var user = {
-        name: username.value,
+        firstName: firstName.value,
+        lastName: lastName.value,
         email: email.value,
         pass: pass.value
     }
