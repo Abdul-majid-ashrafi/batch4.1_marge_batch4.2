@@ -5,6 +5,22 @@
     <title>Dashboard</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M"
         crossorigin="anonymous">
+
+
+    <script src="https://www.gstatic.com/firebasejs/4.3.0/firebase.js"></script>
+    <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyCOh-2auZojTjjVs3OxNVGJLd2H9ZH9l6M",
+            authDomain: "example-5dee0.firebaseapp.com",
+            databaseURL: "https://example-5dee0.firebaseio.com",
+            projectId: "example-5dee0",
+            storageBucket: "example-5dee0.appspot.com",
+            messagingSenderId: "206898766005"
+        };
+        firebase.initializeApp(config);
+    </script>
+
 </head>
 
 <body>
@@ -36,6 +52,14 @@
                 <button class="btn btn-lg btn-primary" type="submit">Edit Profile</button>
 
 
+
+            </div>
+
+
+            <div class="col-6">
+                <textarea id="dua" cols="30" rows="10"> write something</textarea>
+                <br/>
+                <button class="btn btn-lg btn-primary" onclick="praySubmit()">Submit</button>
 
             </div>
         </div>
