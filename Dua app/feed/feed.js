@@ -48,14 +48,6 @@ database.child('post').on("child_added", function (snap) {
 
     // comments render
     var commentList = document.createElement("DIV");
-    // commentList.className = 'list-group'
-
-    // var list = document.createElement("A");
-    // list.className = 'list-group-item list-group-item-action'
-    // var commnts = document.createTextNode("HELLO")
-    // list.appendChild(commnts)
-    // commentList.appendChild(list)
-
 
     var textH4 = document.createTextNode(obj.userName)
     var textP = document.createTextNode(obj.pray)
@@ -70,26 +62,25 @@ database.child('post').on("child_added", function (snap) {
 
 })
 
-// database.child("comments").on('child_added', function(data){
-//     var comment = data.val();
+database.child("comment").on('child_added', function (data) {
+    var comment = data.val();
+    renderComment(comment);
+})
 
-//     renderComment(comment);
-// })
+function renderComment(comment) {
+    var mainDiv = document.createElement("DIV");
+    var bodyDiv = document.createElement("DIV");
+    mainDiv.setAttribute("class", "card");
+    bodyDiv.setAttribute("class", "card-body");
+    mainDiv.appendChild(bodyDiv);
 
-// function renderComment(comment){
-//     var mainDiv = document.createElement("DIV");
-//     var bodyDiv = document.createElement("DIV");
-//     mainDiv.setAttribute("class", "card");
-//     bodyDiv.setAttribute("class", "card-body");
-//     mainDiv.appendChild(bodyDiv);
+    var commentText = document.createTextNode("Sender:" + comment.sender + "Comment:" + comment.comment)
+    bodyDiv.appendChild(commentText)
+    var postDiv = document.getElementById(comment.postUID);
 
-//     var commentText = document.createTextNode("Sender:" + comment.senderName + "Comment:" + comment.comment)
-//     bodyDiv.appendChild(commentText)
-//     var postDiv = document.getElementById(comment.postUID);
-
-//     var commentDiv = postDiv.lastElementChild;
-//     commentDiv.appendChild(mainDiv);
-// }
+    var commentDiv = postDiv.lastElementChild;
+    commentDiv.appendChild(mainDiv);
+}
 
 
 
