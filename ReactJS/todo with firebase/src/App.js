@@ -7,7 +7,10 @@ class App extends Component {
   constructor() {
     super()
     this.state = {
-      todos: []
+      todos: [],
+      flag: true,
+      todoVal: '',
+      todoID: ''
     }
 
     firebase.database().ref('/').child("todos").on('child_added', (snap) => {
@@ -28,6 +31,15 @@ class App extends Component {
     a = a.slice(0, ind).concat(a.slice(ind + 1))
     this.setState({ todos: a });
   }
+  editTodo(ky, val) {
+    this.setState({ todoVal: val, todoID: ky, flag: false });
+  }
+  update() {
+    // console.log(this.refs.todoUpdate.value)
+    firebase.database().ref('/').child(`todos/${this.state.todoID}`).update({ todo: this.refs.todoUpdate.value }).then(() => {
+      this.setState({ flag: true })
+    })
+  }
 
   render() {
     return (
@@ -38,13 +50,31 @@ class App extends Component {
           <input type="text" ref="todo" />
           <button onClick={this.addTodo.bind(this)}>Add Todo</button>
         </header>
-        <ul>
-          {this.state.todos.map((val, ind) => {
-            return <li key={ind}> {val.todo}
-              <button onClick={this.removeTodo.bind(this, val.id, ind)}>remove </button>
-            </li>
-          })}
-        </ul>
+
+        {(this.state.flag) ?
+          <ul>
+            {this.state.todos.map((val, ind) => {
+              return <li key={ind}>
+
+                {val.todo} {ind}
+                <button onClick={this.removeTodo.bind(this, val.id, ind)}>remove </button>
+                <button onClick={this.editTodo.bind(this, val.id, val.todo)}>Edit </button>
+              </li>
+            })}
+          </ul>
+          :
+          <div>
+            <input type="text" ref="todoUpdate" defaultValue={this.state.todoVal} />
+            <button onClick={this.update.bind(this)}>Update Todo</button>
+            <button onClick={() => { this.setState({ flag: true }) }}>Cancel</button>
+          </div>
+        }
+
+        <div>
+          {/* <input type="text" ref="todoUpdate" /> */}
+          {/* <button onClick={this.updateTodo.bind(this)}>Update Todo</button> */}
+
+        </div>
       </div>
     );
   }
