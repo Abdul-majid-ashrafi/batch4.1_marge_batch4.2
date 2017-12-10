@@ -9,22 +9,52 @@ class App extends Component {
       val: 0
     }
   }
+
+
+  /*componentWillMount()
+  Executed before the node is inserted into the DOM.
+  NOTE:
+  Not allow : nextProps , nextState 
+  Allow : this.setState  
+  */
   componentWillMount() {
     this.setState({ abc: 2 })
   }
 
+  /*
+  componentDidMount()
+  Executed after the node is inserted into the DOM.
+  NOTE:
+  Not allow : nextProps , nextState ,this.setState  
+  */
   componentDidMount() { }
 
+  /*
+  componentWillUpdate(nextProps, nextState)
+  Executed before the render() method of your component is called again (as a
+  result to changes to the properties or state).
+  */
   componentWillUpdate(newProps, newState) {
     console.log(`New state.val ${newState.val}`)
     console.log(`New state.abc ${newState.abc}`)
   }
 
+
+  /*
+  componentDidUpdate(prevProps, prevState)
+  Executed after the render() method is done and the new changes to the underlying
+  DOM have been applied.
+  */
   componentDidUpdate(oldProps, oldState) {
     console.log(`Old state.val ${oldState.val}`)
     console.log(`Old state.abc ${oldState.abc}`)
   }
 
+  /*
+    shouldComponentUpdate(newProps, newState)
+    This method is called before componentWillUpdate() and gives you a chance to
+    return false; and cancel the update, which means your render() method
+    won’t be invoked.*/
   shouldComponentUpdate() {
     return this.state.val % 5 === 0
   }
