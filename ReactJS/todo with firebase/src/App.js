@@ -28,7 +28,8 @@ class App extends Component {
   removeTodo(ky, ind) {
     firebase.database().ref('/').child(`todos/${ky}`).remove();
     var a = this.state.todos
-    a = a.slice(0, ind).concat(a.slice(ind + 1))
+   // a = a.slice(0, ind).concat(a.slice(ind + 1))
+    a.splice(ind,1)
     this.setState({ todos: a });
   }
   editTodo(ky, val) {
