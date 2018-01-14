@@ -2,7 +2,6 @@ var obj = {
     result: 3,
     lastValues: []
 }
-
 export const reducer = (state = obj, action) => {
     switch (action.type) {
         case "ADD":
@@ -14,7 +13,7 @@ export const reducer = (state = obj, action) => {
         case "REM":
             state = {
                 result: state.result - action.payload,               //   this is muteable
-                lastValues: [...state.lastValues, action.value]
+                lastValues: [...state.lastValues, action.payload]
             }
             break;
     }

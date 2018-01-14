@@ -1,6 +1,5 @@
 import { createStore, combineReducers } from 'redux';
 import { countReducer, userReducer } from './reducers';
-import { userInfo } from 'os';
 
 const rootReducers = combineReducers({ countReducer, userReducer })
 

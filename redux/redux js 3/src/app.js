@@ -16,5 +16,5 @@ store.dispatch({
 })
 store.dispatch({
     type: "REM",
-    value: 100
+    payload: 100
 })
